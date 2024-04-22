@@ -38,23 +38,8 @@ const displayCurrentWeather = (data) => {
   // Display current weather data in the UI
   const temperatureCelsius = data.temp;
   const temperatureFahrenheit = (temperatureCelsius * 9/5) + 32;
-  let weatherEmoji = "";
-  if (data.weather.code >= 200 && data.weather.code < 600) {
-    // Weather condition is related to precipitation
-    weatherEmoji = "🌧️";
-  } else if (data.weather.code >= 600 && data.weather.code < 700) {
-    // Weather condition is related to snow
-    weatherEmoji = "❄️";
-  } else if (data.weather.code >= 700 && data.weather.code < 800) {
-    // Weather condition is related to atmospheric conditions (e.g., fog, dust)
-    weatherEmoji = "🌫️";
-  } else if (temperatureCelsius >= 25) {
-    weatherEmoji = "☀️"; // Sun emoji for hot weather
-  } else if (temperatureCelsius >= 15) {
-    weatherEmoji = "⛅"; // Partly cloudy emoji for warm weather
-  } else {
-    weatherEmoji = "🌥️"; // Cloud emoji for cold weather
-  }
+  let weatherEmoji = "⛅"; // Default emoji for all weather conditions
+  
   // Check if the temperature is currently displayed in Celsius or Fahrenheit
   const temperatureElement = document.querySelector('.temperature');
   const currentUnit = temperatureElement.dataset.unit;
